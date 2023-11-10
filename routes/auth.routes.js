@@ -70,6 +70,10 @@ router.post("/signup", async (req, res, next) => {
 
     await User.create({
       name,
+      adress,
+      dateOfBirth,
+      telNum,
+      country,
       email,
       password: hashedPassword,
     });
@@ -120,14 +124,17 @@ router.post("/login", async (req, res, next) => {
       return; // esto detiene la ruta/funcion
     }
 
-     // usuario validado/autenticado. Todo bien.
+    // usuario validado/autenticado. Todo bien.
     // crear un sesion activa del usuario para que pueda navegar como activo en la pagina
 
     // en la sesion deberiamos agregar unicamente informacion del usuario que no cambia.
     const sessionInfo = {
       _id: foundUser._id, // ! el id del usuario
       email: foundUser.email,
+      role: foundUser.role
     };
+
+
 
     //    esto nosotros le damos cualquier nombre
     //           |
@@ -147,12 +154,10 @@ router.post("/login", async (req, res, next) => {
 
 // GET "/auth/logout" => cerrar la sesión activa del usuario y redireccionarlo a "/"
 router.get("/logout", (req, res, next) => {
+  req.session.destroy(() => {
+    // despues de destruir la sesion, que quieres hacer?
+    res.redirect("/");
+  });
+});
 
-    req.session.destroy(() => {
-      // despues de destruir la sesion, que quieres hacer?
-      res.redirect("/")
-    })
-  
-  })
-  
 module.exports = router;
