@@ -1,0 +1,51 @@
+<div>
+
+  <h3>New Card</h3>
+
+  <form action="/patata" method="post">
+
+    <label for="name">Card's name:</label>
+    {{!-- <input type="text" name="username" required> --}}
+    <input type="text" name="name" value="{{this.name}}">
+
+    <br>
+
+    <label for="description">Description:</label>
+    <input type="text" name="description" value="{{this.description}}">
+
+    <br>
+
+    <label for="rarity">Rarity:</label>
+    <input type="text" name="rarity" value="{{this.rarity}}">
+
+    <br>
+
+    <label for="noSeries">Series number:</label>
+    <input type="String" name="noSeries" value="{{this.noSeries}}">
+
+    <br>
+
+    <label for="language">Language:</label>
+    <input type="text" name="language" value="{{this.language}}">
+
+    <br>
+
+    <label for="image">Image:</label>
+    <input type="image" name="image" value="{{this.image}}">
+
+    <br>
+
+    <button>Submit</button>
+
+    {{#if this.errorMessage}}
+
+      <p class="error">{{this.errorMessage}}</p>
+
+    {{/if}}
+
+
+  </form>
+
+
+
+</div>
