@@ -4,6 +4,10 @@ const router = express.Router();
 const { isLoggedIn, isAdmin } = require("../middlewares/auth.middleware.js");
 const User = require('../models/User.model');
 
+// const Card = require('../models/Card.model.js');
+
+const uploader = require("../middlewares/cloudinary.middleware.js");
+
 // ejemplo de una ruta privada (solo usuarios logeados)
 router.get("/", isLoggedIn, (req, res, next) => {
 
@@ -14,8 +18,18 @@ router.get("/", isLoggedIn, (req, res, next) => {
   User.findById(req.session.user._id)
   .then((response) => {
     console.log(response) // info del usuario para pasar al render
-    res.render("profile/private.hbs" , { name: 1 })
+    res.render("profile/private.hbs", {
+        userProfile: response
+    }) 
   })
+
+//   Card.findById(req.session.user._id)
+//   .then((response) => {
+//     console.log(response) // info del usuario para pasar al render
+//     res.render("profile/admin.hbs", {
+//         userProfile: response
+//     }) 
+//   })
   .catch((err) => next(err))
 
 
@@ -29,6 +43,27 @@ router.get("/admin", isLoggedIn, isAdmin, (req, res, next) => {
   res.render("profile/admin.hbs")
 
 })
+
+// +++++++++++++++++++++++++++++++
+// recepción de imagen, carga a cloudinary, DB y redirección de usuario tras acción
+router.post("/upload-card", uploader.single("image"), async (req, res, next) => {
+
+    console.log(req.file)
+
+    try {
+        
+        await User.findByIdAndUpdate(req.session.user._id, {
+
+        })
+
+        res.redirect("/profile")
+    } catch (error) {
+        next(error)
+    }
+
+})
+
+
 
 
 

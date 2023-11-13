@@ -40,7 +40,9 @@ const userSchema = new Schema(
       type: String,
       enum: ["user", "admin"],
       default: "user"
-    }
+    },
+
+    image: String
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`    
