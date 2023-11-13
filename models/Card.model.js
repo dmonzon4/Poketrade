@@ -25,10 +25,13 @@ const cardSchema = new Schema(
         type: String,
         trim: true,
       },
-      image: {
-        type: String,
-        required: true
-      }
+      
+      image: String
+
+      // image: {
+      //   type: String,
+      //   required: true
+      // }
     },
     {
       // this second object adds extra properties: `createdAt` and `updatedAt`    

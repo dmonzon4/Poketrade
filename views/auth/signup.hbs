@@ -6,27 +6,27 @@
 
     <label for="name">Nombre de usuario</label>
     {{!-- <input type="text" name="username" required> --}}
-    <input type="text" name="name">
+    <input type="text" name="name" value="{{this.name}}">
 
     <br>
 
     <label for="adress">Dirección</label>
-    <input type="text" name="adress">
+    <input type="text" name="adress" value="{{this.adress}}">
 
     <br>
 
     <label for="dateOfBirth">Fecha de nacimiento</label>
-    <input type="date" name="dateOfBirth">
+    <input type="date" name="dateOfBirth" value="{{this.dateOfBirth}}">
 
     <br>
 
     <label for="telNum">Num. Teléfono</label>
-    <input type="String" name="telNum">
+    <input type="String" name="telNum" value="{{this.telNum}}">
 
     <br>
 
     <label for="email">Correo electrónico</label>
-    <input type="email" name="email" >
+    <input type="email" name="email" value="{{this.email}}">
 
     <br>
 
@@ -36,15 +36,17 @@
     <br>
 
        <label for="country">País</label>
-    <select name="country">
-      <option value="ar">Argentina</option>
-      <option value="br">Brasil</option>
-      <option value="mx">México</option>
-      <option value="mx">España</option>
-      <option value="mx">Guatemala</option>
-      <option value="mx">United State</option>
-      <!-- Agrega más opciones según tus necesidades -->
-    </select>
+      <input type="text" list="countries" name="country" id="countryInput" placeholder="Escribe el nombre del país">
+      <datalist id="countries">
+        <option value="Argentina">
+        <option value="Brasil">
+        <option value="México">
+        <option value="España">
+        <option value="Guatemala">
+        <option value="United States">
+        <!-- Agregar más opciones -->
+      </datalist>
+
 
     <br>
 

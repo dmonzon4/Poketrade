@@ -29,6 +29,11 @@ router.post("/signup", async (req, res, next) => {
     // 1. queremos indicarle al usuario que hubo fallo de frontend
     res.render("auth/signup.hbs", {
       errorMessage: "Todos los campos deben estar llenos",
+      name,
+      adress,
+      dateOfBirth,
+      telNum,
+      email,
     });
 
     // 2. detener la ejecucion de la ruta/funcion
@@ -41,7 +46,7 @@ router.post("/signup", async (req, res, next) => {
   if (passwordRegex.test(password) === false) {
     res.render("auth/signup.hbs", {
       errorMessage:
-        "La contraseña no es lo suficientemente segura. Debe tener al menos 8 carácteres, al menos una mayúscula, una minúscula y un número.",
+        "La contraseña debe contener al menos 8 carácteres, al menos una mayúscula, una minúscula, un número y un símbolo.",
     });
     return; // detener la ruta
   }
@@ -78,8 +83,8 @@ router.post("/signup", async (req, res, next) => {
       password: hashedPassword,
     });
 
-    // redireccion de prueba si todo sale bien
-    res.redirect("/");
+    // redireccion !!!!!!!!!!!!!!!!
+    res.redirect("/auth/login");
   } catch (err) {
     next(err);
   }
@@ -97,10 +102,10 @@ router.post("/login", async (req, res, next) => {
   if (email === "" || password === "") {
     res.status(400).render("auth/login.hbs", {
       errorMessage: "Todos los campos deben estar llenos",
-      email, // ejemplo de enviar los valores de campos antes de tener el error
-      password, // ejemplo de enviar los valores de campos antes de tener el error
+      email, 
+      password, 
     });
-    return; // esto detiene la ruta/funcion
+    return; 
   }
 
   try {
@@ -110,7 +115,7 @@ router.post("/login", async (req, res, next) => {
       res.status(400).render("auth/login.hbs", {
         errorMessage: "Usuario no registrado",
       });
-      return; // esto detiene la ruta/funcion
+      return; 
     }
 
     // validar que la contraseña sea la correcto
@@ -121,7 +126,7 @@ router.post("/login", async (req, res, next) => {
       res.status(400).render("auth/login.hbs", {
         errorMessage: "Contraseña no valida",
       });
-      return; // esto detiene la ruta/funcion
+      return; 
     }
 
     // usuario validado/autenticado. Todo bien.
@@ -139,7 +144,7 @@ router.post("/login", async (req, res, next) => {
     //    esto nosotros le damos cualquier nombre
     //           |
     req.session.user = sessionInfo;
-    // ! req.session es algo que vamos a tener acceso en CUALQUIER ruta de i servidor
+    // ! req.session es algo a lo que vamos a tener acceso en CUALQUIER ruta de mi servidor
 
     req.session.save(() => {
       // despues de registrar correctamente la sesion, que quieres hacer?
