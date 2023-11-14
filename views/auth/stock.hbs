@@ -37,6 +37,8 @@
 
     <button>Submit</button>
 
+      
+
     {{#if this.errorMessage}}
 
       <p class="error">{{this.errorMessage}}</p>
@@ -46,6 +48,14 @@
 
   </form>
 
-
+<br>
 
 </div>
+
+      {{!-- <form action="/profile/upload-card" method="post" enctype="multipart/form-data">
+        <label for="image">Add Card!</label>
+        <input type="file" name="image">
+        <button>Upload</button>
+
+      </form>
+        <img src="{{this.userProfile.image}}" alt="Pokemon card image" width="300px"> --}}

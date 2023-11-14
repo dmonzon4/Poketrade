@@ -1,9 +1,23 @@
 <div>
 
-    <h3>Stock</h3>
+    <h2>Admin Profile</h2>
 
-    <p>Bienvenido admin</p>
+    <h3>Welcome {{this.userProfile.name}}!</h3>
 
-    <p>Cartas:</p>
+    <p>What would you like to do today?</p>
+
+    <a href="">Stock</a>
+
+    <form action="/profile/upload-card" method="post" enctype="multipart/form-data">
+
+        <label for="image">Add Card!</label>
+        <input type="file" name="image">
+        <button>Upload</button>
+
+    </form>
+
+    <img src="{{this.userProfile.image}}" alt="Pokemon card image" width="300px">
+
+
 
 </div>
