@@ -2,12 +2,12 @@ const express = require("express");
 const Card = require("../models/Card.model");
 const router = express.Router();
 
-router.get("/stock", (req, res, next) => {
+router.get("/", (req, res, next) => {
   res.render("auth/stock.hbs");
 });
 
 // POST "/auth/patata" => recibir los datos de las cartas y crealo en la DB
-router.post("/stock", async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   console.log(req.body);
 
   const {name, description, rarity, noSeries, language, image } =
