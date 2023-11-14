@@ -40,12 +40,7 @@ const userSchema = new Schema(
       type: String,
       enum: ["user", "admin"],
       default: "user"
-    },
-    // card:  [{
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: "Card"
-    // }]
-
+    }
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`    

@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const mongoose = require("mongoose");
 
 // TODO: Please make sure you edit the User model to whatever makes sense in this case
 const cardSchema = new Schema(
@@ -25,13 +26,17 @@ const cardSchema = new Schema(
         type: String,
         trim: true,
       },
+      image: {
+        type: String,
+        required: true
+      },
+      user: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+      }]
       
-      image: String
 
-      // image: {
-      //   type: String,
-      //   required: true
-      // }
+
     },
     {
       // this second object adds extra properties: `createdAt` and `updatedAt`    
