@@ -51,4 +51,36 @@ router.post("/", async (req, res, next) => {
   }
 })
 
+// //GET "/"
+// router.get("/patata2", (req, res, next) => {
+//   Card.find()
+//   .select({name: 1, description: 1})
+//   .then((response ) => {
+//     console.log(response)
+//     res.render("index.hbs", {
+//       allCards: response
+//     })
+//   })
+//   .catch((err) => {
+//     next(err)
+//   })
+// })
+
+// GET "/card/:cardId/details"
+router.get("/:cardId/details", async (req, res, next) => {
+
+  try {
+
+    const response = await Card.findById(req.params.cardId).populate("user")
+    console.log(req.params.cardId)
+    console.log(response)
+
+    res.render("card.hbs", {
+      oneCard: response
+    })
+  } catch(err) {
+    next(err)
+  }
+})
+
 module.exports = router;

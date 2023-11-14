@@ -1,10 +1,27 @@
 const express = require('express');
 const router = express.Router();
+const Card = require("../models/Card.model.js")
 
-/* GET home page */
+// /* GET home page */
+// router.get("/", (req, res, next) => {
+//   res.render("index");
+// });
+
+//GET "/"
 router.get("/", (req, res, next) => {
-  res.render("index");
-});
+  Card.find()
+  .select({name: 1, description: 1, image: 1})
+  .then((response ) => {
+    console.log(response)
+    res.render("index.hbs", {
+      allCards: response
+    })
+  })
+  .catch((err) => {
+    next(err)
+  })
+})
+
 
 const authRouter = require("./auth.routes.js")
 router.use("/auth", authRouter)
