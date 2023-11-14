@@ -10,3 +10,17 @@ a {
 h1 {
   color: 15px;
 }
+
+
+/* private.hbs */
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.readonly-form input[type="text"] {
+  border: none;
+  background-color: #f0f0f0;
+  /* Para indicar que los campos no son editables */
+  cursor: not-allowed;
+}

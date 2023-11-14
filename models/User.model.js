@@ -9,7 +9,7 @@ const userSchema = new Schema(
       required: false,
       unique: true
     },
-    adress: {
+    address: {
       type: String,
       trim: true
     },

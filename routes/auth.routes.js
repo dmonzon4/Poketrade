@@ -150,7 +150,7 @@ router.post("/login", async (req, res, next) => {
       // despues de registrar correctamente la sesion, que quieres hacer?
 
       // si todo sale bien
-      res.redirect("/profile"); // ! alguna pagina privada
+      res.redirect("/"); // ! alguna pagina privada
     });
   } catch (err) {
     next(err);
