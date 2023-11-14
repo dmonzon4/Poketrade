@@ -4,9 +4,9 @@
 
     <h3>Welcome {{this.userProfile.name}}!</h3>
 
-    <p>What would you like to do today?</p>
+    {{!-- <p>What would you like to do today?</p>
 
-    <a href="">Stock</a>
+    <a href="/stock">Stock</a>
 
     <form action="/profile/upload-card" method="post" enctype="multipart/form-data">
 
@@ -16,8 +16,17 @@
 
     </form>
 
-    <img src="{{this.userProfile.image}}" alt="Pokemon card image" width="300px">
+    <img src="{{this.userProfile.image}}" alt="Pokemon card image" width="300px"> --}}
 
+    <div>
 
+        <div>
+            {{this.image}}
+            {{this.name}}
+            {{this.description}}
+            <a href="/card">See more</a>
+        </div>
+
+    </div>
 
 </div>

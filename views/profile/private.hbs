@@ -1,8 +1,24 @@
 <div>
 
     {{!-- <h3>Info de un perfil privado</h3> --}}
-    <h3>Welcome {{this.userProfile.name}}!</h3>
+    <h3>Profile data:</h3>
 
-    <p>Your cards:</p>
+    <div>
+
+        <div class="form-container">
+    <form id="userDataForm" class="readonly-form">
+        <p>Name: <input type="text" id="name" value="{{this.userProfile.name}}" readonly></p>
+        <p>Address: <input type="text" id="address" value="{{this.userProfile.address}}" readonly></p>
+        <p>Date of Birth: <input type="text" id="dob" value="{{this.userProfile.dateOfBirth}}" readonly></p>
+        <p>Telephone Number: <input type="text" id="telNum" value="{{this.userProfile.telNum}}" readonly></p>
+        <p>Country: <input type="text" id="country" value="{{this.userProfile.country}}" readonly></p>
+        <p>Email: <input type="text" id="email" value="{{this.userProfile.email}}" readonly></p>
+        <p>Role: <input type="text" id="role" value="{{this.userProfile.role}}" readonly></p>
+
+        <a href="/">Go back</a>
+    </form>
+</div>
+
+    </div>
 
 </div>
