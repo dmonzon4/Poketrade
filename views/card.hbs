@@ -10,12 +10,35 @@
 
 
     <h2>{{this.oneCard.name}}</h2>
+    <h4>{{this.oneCard.name}}</h4>
     <p>{{this.oneCard.description}}
     <p>{{this.oneCard.rarity}}
     <p>{{this.oneCard.noSeries}}
     <p>{{this.oneCard.language}}
     
+    {{#each this.oneCard.user}}
+    
+    {{/each}}
 
+    
+
+    
+    {{!-- <p>Autor: {{this.oneBook.author.name}} nacido en {{this.oneBook.author.country}} en año {{this.oneBook.author.yearBorn}} </p> --}}
+
+    {{#each this.oneCard.user}}
+      <p>Autor: {{this.name}} nacido en {{this.country}} en año {{this.yearBorn}} </p>
+    {{/each}}
+
+
+    {{!-- {{#with this.oneBook.author}}
+      <p>Autor: {{name}} nacido en {{country}} en año {{yearBorn}} </p>
+    {{/with}} --}}
+
+    {{!-- <a href="/book/{{this.oneCard._id}}/edit">
+      <button>Ir a editar</button>
+    </a> --}}
+
+  </div>
 
     <br>
     <a href="/stock/{{this.oneCard._id}}"><button>Details</button></a>
