@@ -1,5 +1,6 @@
 const express = require("express");
 const Card = require("../models/Card.model");
+const Offer = require("../models/Offer.model")
 const router = express.Router();
 
 router.get("/", (req, res, next) => {
@@ -68,10 +69,21 @@ router.get("/:cardId/details", async (req, res, next) => {
   }
 })
 
-// POST "/card/:cardId/details" 
-router.post("/:cardId/details", async (req, res, next) => {
+// GET "/card/:cardId/sell"
+router.get("/:cardId/sell", async (req, res, next) => {
 
-  
+  try {
+    const response = await Offer.findById(req.params.offerId).populate("user")
+    console.log(req.params.offerId)
+    console.log(response)
+
+    res.render("auth/sell.hbs", {
+      oneOffer: response
+    })
+  } catch(err) {
+    next(err)
+  }
 })
+
 
 module.exports = router;

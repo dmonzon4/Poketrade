@@ -1,0 +1,43 @@
+<div>
+
+  <h3>Vender carta</h3>
+
+  <form action="/stock" method="post">
+
+    <label for="card">Card's name:</label>
+    {{!-- <input type="text" name="username" required> --}}
+    <input type="text" name="name" value="{{this.card}}">
+
+    <br>
+
+    <label for="seller">Seller:</label>
+    <input type="text" name="seller" value="{{this.seller}}">
+
+    <br>
+
+    <label for="quantity">Quantity:</label>
+    <input type="text" name="quantity" value="{{this.quantity}}">
+
+    <br>
+
+    <label for="price">Price:</label>
+    <input type="String" name="price" value="{{this.price}}">
+
+    <br>
+
+    <button>Publish</button>
+
+      
+
+    {{#if this.errorMessage}}
+
+      <p class="error">{{this.errorMessage}}</p>
+
+    {{/if}}
+
+
+  </form>
+  
+<br>
+
+</div>

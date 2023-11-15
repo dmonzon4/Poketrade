@@ -32,4 +32,7 @@ router.use("/profile", profileRouter)
 const cardRouter = require("./cards.routes.js")
 router.use("/stock", cardRouter)
 
+const offerRouter = require("./offer.routes.js")
+router.use("/offer", offerRouter)
+
 module.exports = router;

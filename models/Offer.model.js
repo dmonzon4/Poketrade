@@ -4,12 +4,12 @@ const { Schema, model } = require("mongoose");
 const offerSchema = new Schema(
     {
       card: {
-        type: ObjectId,
+        type: String,
         trim: true,
         required: false,
       },
       seller: {
-        type: ObjectId,
+        type: String,
         trim: true
       },
       quantity: {
