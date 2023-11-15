@@ -68,4 +68,10 @@ router.get("/:cardId/details", async (req, res, next) => {
   }
 })
 
+// POST "/card/:cardId/details" 
+router.post("/:cardId/details", async (req, res, next) => {
+
+  
+})
+
 module.exports = router;
