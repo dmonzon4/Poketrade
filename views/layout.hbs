@@ -6,31 +6,84 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>{{appTitle}}</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
       <link rel="stylesheet" href="/stylesheets/style.css" />
    </head>
 
    <body>
-      
-      <nav>
-         <a href="/">Home</a>
 
-      {{#if isSessionActive}}
-         <a href="/stock">Add-items</a>
-         <a href="/favorites">Favorites</a>
-         <a href="/cart">Cart</a>
-         <a href="/">Stock</a>
-         <a href="/profile">Profile</a>
-         <a href="/auth/logout">Log out</a>
-      {{else}}
-         <a href="/auth/signup">Sign in</a>
-         <a href="/auth/login">Log in</a>
-      {{/if}}
+
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+         <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+               <img src="./images/google.png" alt="Logo" height="30">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+               <ul class="navbar-nav me-auto">
+               <li class="nav-item">
+                  <a class="nav-link" href="/">Home</a>
+               </li>
+               {{#if isSessionActive}}
+               <li class="nav-item">
+                  <a class="nav-link" href="/stock">Add-items</a>
+               </li>
+               </ul>
+
+               <ul class="navbar-nav ms-auto">
+               <li class="nav-item">
+                  <a class="nav-link" href="/cart">Cart</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="/">Stock</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="/profile">Profile</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="/favorites">Favorites</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="/auth/logout">Log out</a>
+               </li>
+               {{else}}
+               <li class="nav-item">
+                  <a class="nav-link" href="/auth/signup">Sign in</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="/auth/login">Log in</a>
+               </li>
+
+
+               </ul>
+               {{/if}}
+            </div>
+         </div>
       </nav>
 
+      <div class="cover d-flex justify-content-center align-items-center flex-column">
+
+         <h1>Poketrade</h1>
+         <p>All about Pokemon Cards!</p>
+
+
+      </div>
+
+
+
+      
       {{{body}}}
 
 
       <script src="/js/script.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-pwexiFyJ56AvqMl4JnomQyL46Acd//6QzoFwn+1W8wE5t6RSOOf4HgERdknK5LlN" crossorigin="anonymous"></script>
+
    </body>
 
   

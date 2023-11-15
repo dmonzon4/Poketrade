@@ -1,20 +1,13 @@
-<h1>Poketrade</h1>
-<p>Welcome to Poketrade!</p>
 
-
-
-{{!-- <div class="cards-container">
-        {{#each allCards}}
-        <div class="card-item-home">
-            <img src="{{this.image}}" alt="card" height="200px">
-            <p>{{this.name}}</p>
-            <p>
-                <a href="/card/{{this._id}}">See more</a>
-            </p>
-        </div>
-        {{/each}}
-    </div> --}}
-
-    <a href="/card/">
-        <button>Check this card out!</button>
-    </a>
+ <div class="cards-container mt-5">
+    {{#each allCards}}
+    <div class="card-item">
+        <img src="{{this.image}}" alt="Card Image" width="400">
+        <p>{{this.name}}</p>
+        <p>{{this.description}}</p>
+        <a href="/stock/{{this._id}}/details">
+            <button class="btn btn-primary">Check this card out!</button>
+        </a>
+    </div>
+    {{/each}}
+</div>

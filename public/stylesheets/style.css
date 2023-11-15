@@ -1,6 +1,8 @@
 body {
-  padding: 50px;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /* background-color: rgba(9, 10, 88, 0.93); */
+
 }
 
 a {
@@ -10,6 +12,35 @@ a {
 h1 {
   color: 15px;
 }
+
+
+/* index.hbs */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centra los elementos horizontalmente */
+}
+
+.card-item {
+  width: 400px; /* Ancho aproximado de 500px */
+  margin: 10px; /* Espacio entre los elementos */
+  text-align: center; /* Centra el contenido dentro del div */
+  box-sizing: border-box;
+  padding: 15px;
+  border: 1px solid #ccc; /* Borde para visualización */
+}
+
+.cover{
+  height: 400px;
+  background-color: aquamarine;
+  color: white;
+  background-image: url(https://i.ytimg.com/vi/KatEvrvL2Uc/maxresdefault.jpg);
+  background-position: center;
+  background-color: rgba(0,0,0,0.5);
+  background-blend-mode: darken;
+}
+
+
 
 
 /* private.hbs */
