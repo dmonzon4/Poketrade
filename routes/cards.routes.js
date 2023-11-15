@@ -2,12 +2,14 @@ const express = require("express");
 const Card = require("../models/Card.model");
 const router = express.Router();
 
+const uploader = require("../middlewares/cloudinary.middleware.js");
+
 router.get("/", (req, res, next) => {
   res.render("auth/stock.hbs");
 });
 
 // POST "/auth/patata" => recibir los datos de las cartas y crealo en la DB
-router.post("/", async (req, res, next) => {
+router.post("/", uploader.single("image"), async (req, res, next) => {
   console.log(req.body);
 
   const {name, description, rarity, noSeries, language, image } =
@@ -43,7 +45,7 @@ router.post("/", async (req, res, next) => {
       rarity,
       noSeries,
       language,
-      image,
+      image: req.file.path
     });
     res.redirect("/"); 
   } catch (err) {
