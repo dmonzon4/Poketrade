@@ -20,6 +20,7 @@
     
     {{/each}}
 
+  
     
 
     
@@ -38,10 +39,20 @@
       <button>Ir a editar</button>
     </a> --}}
 
+  {{#each this.offersArr}}
+
+  <p>{{this.card}}
+  <p>{{this.seller}}
+  <p>{{this.quantity}}
+  <p>{{this.price}}
+    
+
+  {{/each}}
+
   </div>
 
     <br>
-    <a href="/stock/{{this.oneCard._id}}"><button>Details</button></a>
+    <a href="/offer/sell"><button>Vender</button></a>
 
     
 

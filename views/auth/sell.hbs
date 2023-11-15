@@ -2,16 +2,24 @@
 
   <h3>Vender carta</h3>
 
-  <form action="/stock" method="post">
+  <form action="/offer/sell" method="post">
 
-    <label for="card">Card's name:</label>
-    {{!-- <input type="text" name="username" required> --}}
-    <input type="text" name="name" value="{{this.card}}">
+    <label for="card">Autor</label>
+    {{!-- <input type="text" name="author" value="{{this.bookToEdit.author}}"> --}}
 
-    <br>
+    <select name="card">
 
-    <label for="seller">Seller:</label>
-    <input type="text" name="seller" value="{{this.seller}}">
+      <option value="{{this.allcard._id}}" selected>{{this.allcard.name}}</option>
+
+      <option disabled> -------------- </option>
+
+      {{#each this.allCard}}
+        
+        <option value="{{this._id}}">{{this.name}}</option>
+
+      {{/each}}
+
+    </select>
 
     <br>
 
@@ -25,7 +33,7 @@
 
     <br>
 
-    <button>Publish</button>
+    <button type="submit">Vender</button>
 
       
 

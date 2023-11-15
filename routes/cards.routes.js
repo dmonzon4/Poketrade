@@ -2,6 +2,7 @@ const express = require("express");
 const Card = require("../models/Card.model");
 const Offer = require("../models/Offer.model")
 const router = express.Router();
+const User = require("../models/User.model")
 
 router.get("/", (req, res, next) => {
   res.render("auth/stock.hbs");
@@ -73,49 +74,28 @@ router.get("/:cardId/details", async (req, res, next) => {
   try {
 
     const response = await Card.findById(req.params.cardId).populate("user")
+    const offers = await Offer.find()
+    let offersArr = []
+    for (let index = 0; index < offers.length; index++) {
+      if(offers[index].card == req.params.cardId) {
+        offers[index].seller = await User.findById(offers[index].seller).select({name: 1, _id: 0})
+        offers[index].card = await Card.findById(offers[index].card).select({name:1, _id: 0})
+
+        offersArr.push(offers[index])
+      }
+      
+    }
     console.log(req.params.cardId)
     console.log(response)
 
     res.render("card.hbs", {
-      oneCard: response
+      oneCard: response,
+      offersArr
+
     })
   } catch(err) {
     next(err)
   }
 })
-
-// GET "/card/:cardId/details"
-router.get("/:cardId/details", async (req, res, next) => {
-
-  try {
-
-    const response = await Card.findById(req.params.cardId).populate("user")
-    console.log(req.params.cardId)
-    console.log(response)
-
-    res.render("card.hbs", {
-      oneCard: response
-    })
-  } catch(err) {
-    next(err)
-  }
-})
-
-// GET "/card/:cardId/sell"
-router.get("/:cardId/sell", async (req, res, next) => {
-
-  try {
-    const response = await Offer.findById(req.params.offerId).populate("user")
-    console.log(req.params.offerId)
-    console.log(response)
-
-    res.render("auth/sell.hbs", {
-      oneOffer: response
-    })
-  } catch(err) {
-    next(err)
-  }
-})
-
 
 module.exports = router;
