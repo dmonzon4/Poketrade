@@ -1,24 +1,51 @@
-<div>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
 
-    {{!-- <h3>Info de un perfil privado</h3> --}}
-    <h3>Profile data:::</h3>
+    <div class="form-container">
+      <h3>Profile data:</h3>
+      <form id="userDataForm" class="readonly-form">
 
-    <div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Name:</label>
+          <input type="text" class="form-control" id="name" value="{{this.userProfile.name}}" readonly>
+        </div>
 
-        <div class="form-container">
-    <form id="userDataForm" class="readonly-form">
-        <p>Name: <input type="text" id="name" value="{{this.userProfile.name}}" readonly></p>
-        <p>Address: <input type="text" id="address" value="{{this.userProfile.address}}" readonly></p>
-        <p>Date of Birth: <input type="text" id="dob" value="{{this.userProfile.dateOfBirth}}" readonly></p>
-        <p>Telephone Number: <input type="text" id="telNum" value="{{this.userProfile.telNum}}" readonly></p>
-        <p>Country: <input type="text" id="country" value="{{this.userProfile.country}}" readonly></p>
-        <p>Email: <input type="text" id="email" value="{{this.userProfile.email}}" readonly></p>
-        <p>Role: <input type="text" id="role" value="{{this.userProfile.role}}" readonly></p>
+        <div class="mb-3">
+          <label for="address" class="form-label">Address:</label>
+          <input type="text" class="form-control" id="address" value="{{this.userProfile.address}}" readonly>
+        </div>
 
-        <a href="/">Go back</a>
-    </form>
-</div>
+        <div class="mb-3">
+          <label for="dob" class="form-label">Date of Birth:</label>
+          <input type="text" class="form-control" id="dob" value="{{this.userProfile.dateOfBirth}}" readonly>
+        </div>
 
+        <div class="mb-3">
+          <label for="telNum" class="form-label">Telephone Number:</label>
+          <input type="text" class="form-control" id="telNum" value="{{this.userProfile.telNum}}" readonly>
+        </div>
+
+        <div class="mb-3">
+          <label for="country" class="form-label">Country:</label>
+          <input type="text" class="form-control" id="country" value="{{this.userProfile.country}}" readonly>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email:</label>
+          <input type="text" class="form-control" id="email" value="{{this.userProfile.email}}" readonly>
+        </div>
+
+        <div class="mb-3">
+          <label for="role" class="form-label">Role:</label>
+          <input type="text" class="form-control" id="role" value="{{this.userProfile.role}}" readonly>
+        </div>
+
+        <a href="/" class="btn btn-primary">Go back</a>
+
+      </form>
     </div>
 
+  </div>
 </div>
+
