@@ -2,34 +2,26 @@
 
     <h2>Admin Profile</h2>
 
-    <h3>Welcome {{this.userProfile.name}}!</h3>^
+    <h3>Welcome {{this.userProfile.name}}!</h3>
 
 
     
 
     <p>What would you like to do today?</p>
 
-    <a href="/stock">Stock</a>
-
-    <form action="/profile/upload-card" method="post" enctype="multipart/form-data">
-
-        <label for="image">Add Card!</label>
-        <input type="file" name="image">
-        <button>Upload</button>
-
-    </form>
-
-    <img src="{{this.userProfile.image}}" alt="Pokemon card image" width="300px">
-
-    <div>
-
-        <div>
-            {{this.image}}
-            {{this.name}}
-            {{this.description}}
-            <a href="/card">See more</a>
-        </div>
-
+ <div class="cards-container mt-5">
+    {{#each allCards}}
+    <div class="card-item">
+        <img src="{{this.image}}" alt="Card Image" width="400">
+        <p>{{this.name}}</p>
+        <p>{{this.description}}</p>
+        <a href="/stock/{{this._id}}/details">
+            <button class="btn btn-primary">Delete Card</button>
+        </a>
     </div>
+    {{/each}}
 
+    <form action="/profile/{{this.card._id}}/delete" method="post">
+    <button>Borrar Libro</button>
+  </form>
 </div>

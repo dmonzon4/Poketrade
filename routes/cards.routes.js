@@ -123,4 +123,16 @@ router.get("/:cardId/details", async (req, res, next) => {
   }
 });
 
+router.post("/:cardId/delete", (req, res, next) => {
+
+  console.log("borrando card", req.params.cardId)
+  Card.findByIdAndDelete(req.params.cardId)
+  .then(() => {
+    res.redirect("/admin")
+  })
+  .catch((err) => {
+    next(err)
+  })
+})
+
 module.exports = router;

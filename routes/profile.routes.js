@@ -3,6 +3,8 @@ const router = express.Router();
 
 const { isLoggedIn, isAdmin } = require("../middlewares/auth.middleware.js");
 const User = require('../models/User.model');
+const Card = require('../models/Card.model.js')
+const uploader = require("../middlewares/cloudinary.middleware.js");
 
 // const Card = require('../models/Card.model.js');
 
@@ -25,16 +27,28 @@ router.get("/", isLoggedIn, (req, res, next) => {
 
   .catch((err) => next(err))     
 })
-        
+      
+// ORIGINAL
+// router.get("/admin", isLoggedIn, isAdmin, uploader.single("image"), (req, res, next) => {
+//     // console.log(response)
+//     User.findById(req.session.user._id)
+//     .then((response) => {
+//         console.log(response) // info del usuario para pasar al render
+//         res.render("profile/admin.hbs", {
+//             userProfile: response,
+//             allCards: Card
+//         }) 
+//     })
     // ++++++++++++++++++++++++++++++++++++++++++++++
     // ruta solo para admin (escrito)
-router.get("/stock", isLoggedIn, isAdmin, (req, res, next) => {
+router.get("/admin", isLoggedIn, isAdmin, uploader.single("image"), (req, res, next) => {
     // console.log(response)
     User.findById(req.session.user._id)
     .then((response) => {
         console.log(response) // info del usuario para pasar al render
-        res.render("auth/stock.hbs", {
-            userProfile: response
+        res.render("profile/admin.hbs", {
+            userProfile: response,
+            allCards: Card
         }) 
     })
             
