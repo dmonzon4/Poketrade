@@ -20,25 +20,20 @@ router.get("/", isLoggedIn, (req, res, next) => {
     console.log(response) // info del usuario para pasar al render
     res.render("profile/private.hbs", {
         userProfile: response
-    }) 
+    })
   })
 
-  
-
-    .catch((err) => next(err))
-          
-          
-          
+  .catch((err) => next(err))     
 })
         
     // ++++++++++++++++++++++++++++++++++++++++++++++
     // ruta solo para admin (escrito)
-router.get("/admin", isLoggedIn, isAdmin, (req, res, next) => {
+router.get("/stock", isLoggedIn, isAdmin, (req, res, next) => {
     // console.log(response)
     User.findById(req.session.user._id)
     .then((response) => {
         console.log(response) // info del usuario para pasar al render
-        res.render("profile/admin.hbs", {
+        res.render("auth/stock.hbs", {
             userProfile: response
         }) 
     })
