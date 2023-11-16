@@ -1,15 +1,16 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, Types } = require("mongoose");
+
 
 // TODO: Please make sure you edit the User model to whatever makes sense in this case
 const offerSchema = new Schema(
     {
       card: {
-        type: String,
+        type: Types.ObjectId, 
         trim: true,
         required: false,
       },
       seller: {
-        type: String,
+        type: Types.ObjectId,
         trim: true
       },
       quantity: {
@@ -21,7 +22,11 @@ const offerSchema = new Schema(
         type: Number,
         trim: true,
         required: true
-      },      
+      },
+      client: {
+        type: Types.ObjectId,
+        trim: true
+      } 
     },
     {
       // this second object adds extra properties: `createdAt` and `updatedAt`    

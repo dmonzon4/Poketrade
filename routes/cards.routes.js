@@ -71,33 +71,56 @@ router.post("/", uploader.single("image"), async (req, res, next) => {
 // })
 
 // GET "/card/:cardId/details"
-router.get("/:cardId/details", async (req, res, next) => {
+// router.get("/:cardId/details", async (req, res, next) => {
 
-  try {
+//   try {
 
-    const response = await Card.findById(req.params.cardId).populate("user")
-    const offers = await Offer.find()
-    let offersArr = []
-    for (let index = 0; index < offers.length; index++) {
-      if(offers[index].card == req.params.cardId) {
-        offers[index].seller = await User.findById(offers[index].seller).select({name: 1, _id: 0})
-        offers[index].card = await Card.findById(offers[index].card).select({name:1, _id: 0})
+//     const response = await Card.findById(req.params.cardId).populate("user")
+//     const offers = await Offer.find()
+//     let offersArr = []
+//     for (let index = 0; index < offers.length; index++) {
+//       if(offers[index].card == req.params.cardId) {
+//         offers[index].seller = await User.findById(offers[index].seller).select({name: 1, _id: 0})
+//         offers[index].card = await Card.findById(offers[index].card).select({name:1, _id: 0})
 
-        offersArr.push(offers[index])
-      }
+//         offersArr.push(offers[index])
+//       }
       
-    }
-    console.log(req.params.cardId)
-    console.log(response)
+//     }
+//     console.log(req.params.cardId)
+//     console.log(response)
 
+//     res.render("card.hbs", {
+//       oneCard: response,
+//       offersArr
+
+//     })
+//   } catch(err) {
+//     next(err)
+//   }
+// })
+
+router.get("/:cardId/details", async (req, res, next) => {
+  try {
+    const cardId = req.params.cardId;
+    const card = await Card.findById(cardId).populate("user");
+    const offers = await Offer.find({ card: cardId });
+    const offersArr = await Promise.all(offers.map(async (offer) => {
+      const seller = await User.findById(offer.seller).select({ name: 1, _id: 0 });
+      const cardInfo = await Card.findById(offer.card).select({ name: 1, _id: 0 });
+      return {
+        ...offer.toObject(),
+        seller,
+        card: cardInfo
+      };
+    }));
     res.render("card.hbs", {
-      oneCard: response,
+      oneCard: card,
       offersArr
-
-    })
-  } catch(err) {
-    next(err)
+    });
+  } catch (err) {
+    next(err);
   }
-})
+});
 
 module.exports = router;
