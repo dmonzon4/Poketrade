@@ -1,4 +1,40 @@
-<div>
+<div class="container custom-container">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <!-- Detalles de la carta -->
+      <h3>Detalles de tu carta:</h3>
+      <div class="card">
+        <img src="{{this.oneCard.image}}" class="card-img-top" alt="Card Image">
+        <div class="card-body">
+          <h4 class="card-title">{{this.oneCard.name}}</h4>
+          <p class="card-text">{{this.oneCard.description}}</p>
+          <p class="card-text">Rarity: {{this.oneCard.rarity}}</p>
+          <p class="card-text">Series Number: {{this.oneCard.noSeries}}</p>
+          <p class="card-text">Language: {{this.oneCard.language}}</p>
+          <a href="./cart.hbs" class="btn btn-primary">Add to cart</a>
+
+
+          <!-- User Information -->
+          {{#if this.oneCard.user}}
+            {{#each this.oneCard.user}}
+              <p class="card-text">User: {{this.name}}, Country: {{this.country}}, Year Born: {{this.yearBorn}}</p>
+            {{/each}}
+          {{else}}
+            <p class="card-text">No user information available</p>
+          {{/if}}
+          <!-- Edit button -->
+          <!-- <a href="/book/{{this.oneCard._id}}/edit" class="btn btn-primary">Edit</a> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+{{!-- <div>
 
 <h3>Detalles de una carta</h3>
 
@@ -24,9 +60,9 @@
     
     {{!-- <p>Autor: {{this.oneBook.author.name}} nacido en {{this.oneBook.author.country}} en año {{this.oneBook.author.yearBorn}} </p> --}}
 
-    {{#each this.oneCard.user}}
+    {{!-- {{#each this.oneCard.user}}
       <p>Autor: {{this.name}} nacido en {{this.country}} en año {{this.yearBorn}} </p>
-    {{/each}}
+    {{/each}} --}}
 
 
     {{!-- {{#with this.oneBook.author}}
@@ -37,7 +73,7 @@
       <button>Ir a editar</button>
     </a> --}}
 
-  </div>
+  {{!-- </div>
 
 
-</div>
+</div> --}}

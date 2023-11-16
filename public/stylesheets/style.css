@@ -27,7 +27,10 @@ h1 {
   text-align: center; /* Centra el contenido dentro del div */
   box-sizing: border-box;
   padding: 15px;
-  border: 1px solid #ccc; /* Borde para visualización */
+  /* border: 1px solid #ccc; Borde para visualización */
+  font-weight: bold;
+  font-size: 24px; /* Tamaño de la fuente */
+  /* padding: 50px; */
 }
 
 .cover{
@@ -40,7 +43,13 @@ h1 {
   background-blend-mode: darken;
 }
 
+/* details carta*/
 
+.custom-container {
+  max-width: 800px; /* Tamaño máximo del contenedor */
+  margin: auto; /* Centrar el contenedor horizontalmente */
+  padding: 20px; /* Agregar un espacio alrededor del contenido */
+}
 
 
 /* private.hbs */
