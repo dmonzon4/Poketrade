@@ -4,14 +4,12 @@
 
   <form action="/offer/sell" method="post">
 
-    <label for="card">Autor</label>
+    <label for="card">Card</label>
     {{!-- <input type="text" name="author" value="{{this.bookToEdit.author}}"> --}}
 
     <select name="card">
 
       <option value="{{this.allcard._id}}" selected>{{this.allcard.name}}</option>
-
-      <option disabled> -------------- </option>
 
       {{#each this.allCard}}
         
@@ -20,7 +18,8 @@
       {{/each}}
 
     </select>
-
+    <p>*Only available's cards in stock</p>
+    
     <br>
 
     <label for="quantity">Quantity:</label>
