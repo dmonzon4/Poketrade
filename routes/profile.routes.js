@@ -6,7 +6,7 @@ const User = require('../models/User.model');
 
 // const Card = require('../models/Card.model.js');
 
-const uploader = require("../middlewares/cloudinary.middleware.js");
+// const uploader = require("../middlewares/cloudinary.middleware.js");
 
 // ejemplo de una ruta privada (solo usuarios logeados)
 router.get("/", isLoggedIn, (req, res, next) => {
