@@ -3,7 +3,7 @@ const Card = require("../models/Card.model");
 const Offer = require("../models/Offer.model")
 const router = express.Router();
 const User = require("../models/User.model")
-
+const { isLoggedIn, isAdmin } = require("../middlewares/auth.middleware.js");
 const uploader = require("../middlewares/cloudinary.middleware.js");
 
 router.get("/", (req, res, next) => {
@@ -123,16 +123,44 @@ router.get("/:cardId/details", async (req, res, next) => {
   }
 });
 
-router.post("/:cardId/delete", (req, res, next) => {
+// router.post("/:cardId/delete", (req, res, next) => {
 
-  console.log("borrando card", req.params.cardId)
-  Card.findByIdAndDelete(req.params.cardId)
-  .then(() => {
-    res.redirect("/admin")
-  })
-  .catch((err) => {
-    next(err)
-  })
-})
+//   console.log("borrando card", req.params.cardId)
+//   Card.findByIdAndDelete(req.params.cardId)
+//   .then(() => {
+//     res.redirect("/")
+//   })
+//   .catch((err) => {
+//     next(err)
+//   })
+// })
+
+router.delete('/:cardId/delete', isLoggedIn, isAdmin, async (req, res, next) => {
+  try {
+      const cardId = req.params.cardId;
+      
+      await Card.findByIdAndDelete(cardId);
+      
+      res.redirect('/admin'); 
+  } catch (error) {
+      console.error(error);
+      next(error);
+  }
+});
+
+router.get("/cart", isLoggedIn, async (req, res, next) => {
+  try {
+      const user = await User.findById(req.session.user._id);
+      const allCards = await Card.find().select({ name: 1, description: 1, image: 1 });
+      console.log(user); // Información del usuario
+      res.render("cart.hbs", {
+          userProfile: user,
+          allCards: allCards
+      });
+  } catch (error) {
+      console.error(error);
+      next(error);
+  }
+});
 
 module.exports = router;

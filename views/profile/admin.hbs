@@ -15,13 +15,14 @@
         <img src="{{this.image}}" alt="Card Image" width="400">
         <p>{{this.name}}</p>
         <p>{{this.description}}</p>
-        <a href="/stock/{{this._id}}/details">
+        {{!-- <a href="/stock/{{this._id}}/details"> --}}
+        {{!-- <a href="/profile/admin">
             <button class="btn btn-primary">Delete Card</button>
-        </a>
+        </a> --}}
+        <form action="/profile/admin" method="post">
+            <button class="btn btn-danger" type="submit">Delete Card</button>
+        </form>
     </div>
     {{/each}}
 
-    <form action="/profile/{{this.card._id}}/delete" method="post">
-    <button>Borrar Libro</button>
-  </form>
 </div>
