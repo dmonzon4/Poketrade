@@ -53,3 +53,11 @@
     <!-- Línea horizontal (oculta por CSS) -->
   </div>
 </div>
+
+<div>
+  {{!-- {{#if isLoggedIn}} --}}
+    <form action="/stock/{{this.oneCard._id}}/delete" method="post">
+      <button>Delete Card</button>
+    </form>
+  {{!-- {{/if}} --}}
+</div>

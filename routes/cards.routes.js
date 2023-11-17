@@ -135,18 +135,25 @@ router.get("/:cardId/details", async (req, res, next) => {
 //   })
 // })
 
-router.delete('/:cardId/delete', isLoggedIn, isAdmin, async (req, res, next) => {
+router.post("/:cardId/delete", isLoggedIn, isAdmin, async (req, res, next) => {
   try {
+    console.log(res)
       const cardId = req.params.cardId;
       
       await Card.findByIdAndDelete(cardId);
       
-      res.redirect('/admin'); 
+      res.redirect('/'); 
   } catch (error) {
       console.error(error);
       next(error);
   }
 });
+
+// POST "/:cardId/delete" => borrar una carta por su id
+// router.post("/stock/:cardId/delete", (req, res, next) => {
+
+//   console.log("borrando libro", req.params.cardId)
+// })
 
 router.get("/cart", isLoggedIn, async (req, res, next) => {
   try {

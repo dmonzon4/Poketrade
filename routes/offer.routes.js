@@ -47,7 +47,7 @@ router.get("/sell", async (req, res, next) => {
         quantity,
         price,
       });
-      res.redirect("/offer/sell"); 
+      res.redirect("/"); 
     } catch (err) {
       next(err)
     }

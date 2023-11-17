@@ -19,10 +19,12 @@
         {{!-- <a href="/profile/admin">
             <button class="btn btn-primary">Delete Card</button>
         </a> --}}
-        <form action="/profile/admin" method="post">
+        <form action="/{{this._id}}/delete" method="post">
             <button class="btn btn-danger" type="submit">Delete Card</button>
         </form>
     </div>
     {{/each}}
 
+<a href="{{this}}"><button>Borrar carta</button></a>
+<button>Borrar carta</button>
 </div>

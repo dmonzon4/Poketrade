@@ -55,7 +55,7 @@ router.get("/", isLoggedIn, (req, res, next) => {
             
 // })
 
-router.get("/admin", isLoggedIn, async (req, res, next) => {
+router.get("/admin", isAdmin, isLoggedIn, async (req, res, next) => {
     try {
         const user = await User.findById(req.session.user._id);
         const allCards = await Card.find().select({ name: 1, description: 1, image: 1 });
