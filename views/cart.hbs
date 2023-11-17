@@ -23,19 +23,19 @@
 
   <div>
 
-    <h2>Carrito</h2>
+    <h2>Cart</h2>
 
     <h3>Welcome {{this.userProfile.name}}!</h3>
 
 
     
 
-    <p>What would you like to do today?</p>
+    <p>What do you want to buy today?</p>
 
  <div class="cards-container mt-5">
     {{#each allCards}}
     <div class="card-item">
-        <img src="{{this.image}}" alt="Card Image" width="400">
+        {{!-- <img src="{{this.image}}" alt="Card Image" width="400"> --}}
         <p>{{this.name}}</p>
         <p>{{this.description}}</p>
         {{!-- <a href="/stock/{{this._id}}/details"> --}}
