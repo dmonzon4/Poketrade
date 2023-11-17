@@ -1,50 +1,29 @@
-<div>
-
-  <h3>Vender carta</h3>
-
-  <form action="/offer/sell" method="post">
-
-    <label for="card">Card</label>
-    {{!-- <input type="text" name="author" value="{{this.bookToEdit.author}}"> --}}
-
-    <select name="card">
-
-      <option value="{{this.allcard._id}}" selected>{{this.allcard.name}}</option>
-
-      {{#each this.allCard}}
-        
-        <option value="{{this._id}}">{{this.name}}</option>
-
-      {{/each}}
-
-    </select>
-    <p>*Only cards in stock available</p>
-    
+<div class="d-flex justify-content-center mt-5">
+  <div style="width: 50%;">
+    <h3 class="text-center">Sell this card</h3>
+    <form action="/offer/sell" method="post">
+      <label for="card">Card</label>
+      <select name="card" class="form-control">
+        <option value="{{this.allcard._id}}" selected>{{this.allcard.name}}</option>
+        {{#each this.allCard}}
+          <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
+      </select>
+      <p>*Only cards in stock are available</p>
+      <br>
+      <div class="mb-3">
+        <label for="quantity" class="form-label">Quantity:</label>
+        <input type="text" class="form-control" name="quantity" value="{{this.quantity}}">
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Price:</label>
+        <input type="text" class="form-control" name="price" value="{{this.price}}">
+      </div>
+      <button type="submit" class="btn btn-primary">Sell</button>
+      {{#if this.errorMessage}}
+        <p class="error">{{this.errorMessage}}</p>
+      {{/if}}
+    </form>
     <br>
-
-    <label for="quantity">Quantity:</label>
-    <input type="text" name="quantity" value="{{this.quantity}}">
-
-    <br>
-
-    <label for="price">Price:</label>
-    <input type="String" name="price" value="{{this.price}}">
-
-    <br>
-
-    <button type="submit">Sell</button>
-
-      
-
-    {{#if this.errorMessage}}
-
-      <p class="error">{{this.errorMessage}}</p>
-
-    {{/if}}
-
-
-  </form>
-  
-<br>
-
+  </div>
 </div>

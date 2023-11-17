@@ -54,10 +54,10 @@
   </div>
 </div>
 
-<div>
-  {{!-- {{#if isLoggedIn}} --}}
+<div class="container">
+  {{#if isAdminSession}}
     <form action="/stock/{{this.oneCard._id}}/delete" method="post">
-      <button>Delete Card</button>
+      <button class="btn btn-danger">Delete Card</button>
     </form>
-  {{!-- {{/if}} --}}
+  {{/if}}
 </div>
